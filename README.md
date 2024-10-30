@@ -46,26 +46,52 @@ This repository contains Ansible playbooks and configuration files for automatin
 
 ## 📁 Directory Structure
 
-├── README.md
+satellite-subscription-management/
 ├── ansible.cfg
 ├── inventory/
 │   ├── production/
-│   │   ├── hosts.yml
+│   │   ├── inventory.ini
 │   │   └── group_vars/
+│   │       ├── all.yml
+│   │       ├── cnf_west.yml
+│   │       ├── cnf_east.yml
+│   │       ├── azure_west.yml
+│   │       ├── azure_east.yml
+│   │       └── gcp_west.yml
 │   └── staging/
-│       ├── hosts.yml
+│       ├── inventory.ini
 │       └── group_vars/
+│           ├── all.yml
+│           └── staging.yml
+├── logs/
+│   └── ansible.log
 ├── playbooks/
-│   ├── subscription-manager-setup.yml
-│   └── roles/
-│       └── satellite-subscription/
-│           ├── tasks/
-│           ├── handlers/
-│           └── templates/
-└── vars/
-├── cnf-west.yml
-├── cnf-east.yml
-├── azure-west.yml
-├── azure-east.yml
-└── gcp-west.yml
-
+│   ├── roles/
+│   │   └── satellite-subscription/
+│   │       ├── defaults/
+│   │       │   └── main.yml
+│   │       ├── handlers/
+│   │       │   └── main.yml
+│   │       ├── meta/
+│   │       │   └── main.yml
+│   │       ├── tasks/
+│   │       │   ├── main.yml
+│   │       │   ├── pre-checks.yml
+│   │       │   ├── install.yml
+│   │       │   ├── configure.yml
+│   │       │   └── post-checks.yml
+│   │       ├── templates/
+│   │       │   └── rhsm.conf.j2
+│   │       └── vars/
+│   │           └── main.yml
+│   └── subscription-manager-setup.yml
+├── vars/
+│   ├── common.yml
+│   ├── cnf-west.yml
+│   ├── cnf-east.yml
+│   ├── azure-west.yml
+│   ├── azure-east.yml
+│   └── gcp-west.yml
+├── LICENSE
+├── README.md
+└── requirements.yml
